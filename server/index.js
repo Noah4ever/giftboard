@@ -39,6 +39,66 @@ ensureUploadDir().catch((error) => {
 });
 app.use("/uploads", express.static(UPLOAD_DIR));
 
+function withErrorLogging(req, res, next) {
+  const start = Date.now();
+  let responseBody;
+  const originalJson = res.json.bind(res);
+  const originalSend = res.send.bind(res);
+
+  res.json = (body) => {
+    responseBody = body;
+    return originalJson(body);
+  };
+
+  res.send = (body) => {
+    responseBody = body;
+    return originalSend(body);
+  };
+
+  res.on("finish", () => {
+    if (res.statusCode >= 400) {
+      let bodyPreview = "";
+      try {
+        if (typeof responseBody === "string") {
+          bodyPreview = responseBody.slice(0, 500);
+        } else if (responseBody !== undefined) {
+          bodyPreview = JSON.stringify(responseBody).slice(0, 500);
+        }
+      } catch (_err) {
+        bodyPreview = "[unserializable response body]";
+      }
+
+      console.error(
+        `[REST] ${req.method} ${req.originalUrl} -> ${res.statusCode} (${Date.now() - start}ms) body=${bodyPreview}`,
+      );
+    }
+  });
+
+  next();
+}
+
+app.use(withErrorLogging);
+
+app.use((err, req, res, next) => {
+  console.error(`[REST ERROR] ${req.method} ${req.originalUrl}`, err);
+  if (res.headersSent) return next(err);
+  return res.status(500).json({ message: "Internal server error" });
+});
+
+function humanRequestHeaders(url) {
+  return {
+    "User-Agent":
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+    Accept:
+      "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.9",
+    "Cache-Control": "no-cache",
+    Pragma: "no-cache",
+    "Upgrade-Insecure-Requests": "1",
+    ...(url ? { Referer: url } : {}),
+  };
+}
+
 async function ensureDataFile() {
   try {
     await mkdir(DATA_DIR, { recursive: true });
@@ -48,7 +108,7 @@ async function ensureDataFile() {
       await writeFile(
         DATA_PATH,
         JSON.stringify({ lists: [] }, null, 2),
-        "utf-8"
+        "utf-8",
       );
     } else {
       throw error;
@@ -70,7 +130,7 @@ async function enrichWishMeta(listCode, wishId) {
     if (!source) return;
 
     const resp = await fetch(wish.link, {
-      headers: { "User-Agent": "Mozilla/5.0" },
+      headers: humanRequestHeaders(wish.link),
     });
     const html = await resp.text();
 
@@ -159,8 +219,8 @@ function chooseMetaSource(hostname, sources) {
   return (
     sources.find((source) =>
       (source.domains || []).some(
-        (domain) => hostname === domain || hostname.endsWith(`.${domain}`)
-      )
+        (domain) => hostname === domain || hostname.endsWith(`.${domain}`),
+      ),
     ) || null
   );
 }
@@ -280,7 +340,7 @@ app.get("/lists", async (req, res) => {
   }
   const data = await readData();
   const lists = data.lists.filter(
-    (l) => l.owner.toLowerCase() === ownerName.toLowerCase()
+    (l) => l.owner.toLowerCase() === ownerName.toLowerCase(),
   );
   res.json(lists);
 });
@@ -379,8 +439,8 @@ function extractImageFromSource(html, source) {
     const match = html.match(
       new RegExp(
         `${selectors.image.selector}[^>]+${selectors.image.attr}=["']([^"']+)["']`,
-        "i"
-      )
+        "i",
+      ),
     );
     if (match) image = match[1];
   }
@@ -389,8 +449,8 @@ function extractImageFromSource(html, source) {
     const match = html.match(
       new RegExp(
         `${selectors.dynamicImage.selector}[^>]+${selectors.dynamicImage.attr}=["']([^"']+)["']`,
-        "i"
-      )
+        "i",
+      ),
     );
     if (match) {
       try {
@@ -407,8 +467,8 @@ function extractImageFromSource(html, source) {
     const match = html.match(
       new RegExp(
         `${selectors.altImage.selector}[^>]+${selectors.altImage.attr}=["']([^"']+)["']`,
-        "i"
-      )
+        "i",
+      ),
     );
     if (match) image = match[1];
   }
@@ -418,11 +478,14 @@ function extractImageFromSource(html, source) {
 
 app.get("/price", async (req, res) => {
   const url = req.query.url;
+  console.log("Fetching price for URL:", url);
   if (!url || typeof url !== "string") {
     return res.status(400).json({ message: "url is required" });
   }
   try {
-    const resp = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0" } });
+    const resp = await fetch(url, {
+      headers: humanRequestHeaders(url),
+    });
     const html = await resp.text();
     const hostname = new URL(resp.url || url).hostname;
     const sources = await loadMetaSources();
@@ -445,6 +508,7 @@ app.get("/price", async (req, res) => {
 
     return res.json({ price: derivedPrice, image: image || null });
   } catch (error) {
+    console.error("Error fetching price:", error);
     return res.json({ price: null, image: null });
   }
 });
@@ -566,7 +630,7 @@ app.post("/lists/:code/wishes", async (req, res) => {
 
   setImmediate(() => {
     enrichWishMeta(list.code, wish.id).catch((err) =>
-      console.error("Meta enrich failed", err)
+      console.error("Meta enrich failed", err),
     );
   });
 });
