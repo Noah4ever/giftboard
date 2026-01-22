@@ -1,8 +1,16 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+if [ -f .env ]; then
+  set -a
+  # shellcheck disable=SC1091
+  source .env
+  set +a
+fi
+
 project="giftboard"
-server="root@89.58.39.82"
+: "${DEPLOY_SERVER:?DEPLOY_SERVER must be set in .env}"
+server="${DEPLOY_SERVER}"
 port="6003"
 remote_api="/srv/api/${project}"
 remote_front="/srv/projects/${project}/frontend"
