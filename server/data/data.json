@@ -1,0 +1,163 @@
+{
+  "lists": [
+    {
+      "id": "cee9b5fc-ae1c-476f-b266-b82b86fe5a93",
+      "title": "asd",
+      "code": "asd",
+      "owner": "Noahs",
+      "description": "",
+      "createdAt": "2026-01-06T14:37:33.938Z",
+      "wishes": [
+        {
+          "id": "3458e74b-af82-4e5c-90a1-41760fc556f2",
+          "title": "ADS",
+          "priority": "medium",
+          "description": "",
+          "link": "https://amzn.eu/d/ajLeHuB",
+          "image": "https://m.media-amazon.com/images/I/71+4WXa9RfL._SY385_.jpg",
+          "price": null,
+          "priceRange": "15-29",
+          "quantity": 1,
+          "reservations": [
+            {
+              "userName": "Noahs3",
+              "at": "2026-01-06T14:49:22.630Z"
+            }
+          ],
+          "reservedCount": 1,
+          "ticked": true,
+          "tickedBy": "Noahs3",
+          "tickedAt": "2026-01-06T14:49:22.630Z",
+          "createdAt": "2026-01-06T14:48:32.237Z"
+        },
+        {
+          "id": "38671017-84fe-4afd-b5a2-a39a5cd12790",
+          "title": "asd",
+          "priority": "medium",
+          "description": "",
+          "link": "",
+          "image": "",
+          "price": null,
+          "priceRange": "15-20",
+          "quantity": 1,
+          "reservations": [],
+          "reservedCount": 0,
+          "ticked": false,
+          "tickedBy": null,
+          "tickedAt": null,
+          "createdAt": "2026-01-06T14:51:05.487Z"
+        },
+        {
+          "id": "6e34e2ff-06a5-41d7-a533-d4e61b7983ec",
+          "title": "asd",
+          "priority": "medium",
+          "description": "",
+          "link": "https://www.amazon.de/Hobbit-Lord-Rings-Boxed-Set/dp/0261103563/ref=sr_1_5?__mk_de_DE=ÅMÅŽÕÑ&crid=1X2MP03B8IFDF&dib=eyJ2IjoiMSJ9.-Pf31g_oTPs2_nxfQqZcbRJRirUsThkBJrjmK_tdN_OMj5-xERmSy79290s-t_RFmor2wd_XojAIi8CWbxUZOLm2EfwOOsJ1q1OXNtgTruIm42-Q-aqAFoAmxTb5k0xbT5hgJEEeUkQdZnFhe1lX1dt7I-wvuCxP8kUWVflo5UyaIxVOGNFmVKnLG2SGVhqtYKIfc-aQDWtRPNvPdG6qOgXvQ3pdnzqcV-eA4zkmqjY.XbT-GZiFVFWoBCaWOCjzluQMGHQ9Jc3c_xtqrrVX2LE&dib_tag=se&keywords=lord+of+the+rings+fellowship&qid=1767709315&sprefix=lord+of+the+rings+fellowship%2Caps%2C145&sr=8-5",
+          "image": "https://m.media-amazon.com/images/I/71+4WXa9RfL._SY385_.jpg",
+          "price": 33.34,
+          "priceRange": "",
+          "quantity": 1,
+          "reservations": [],
+          "reservedCount": 0,
+          "ticked": false,
+          "tickedBy": null,
+          "tickedAt": null,
+          "createdAt": "2026-01-06T14:51:08.312Z"
+        }
+      ]
+    },
+    {
+      "id": "f407f722-7403-4e15-8f4b-921db735ad7b",
+      "title": "ASD",
+      "code": "asd-1",
+      "owner": "Noahs",
+      "description": "asd",
+      "createdAt": "2026-01-06T15:49:26.913Z",
+      "wishes": [
+        {
+          "id": "2ce6bca8-785c-40d5-8f76-811b827edd41",
+          "title": "TEST",
+          "priority": "medium",
+          "description": "",
+          "link": "",
+          "image": "",
+          "price": null,
+          "priceRange": "",
+          "quantity": 3,
+          "reservations": [
+            {
+              "userName": "Noah1",
+              "at": "2026-01-06T15:50:42.171Z"
+            }
+          ],
+          "reservedCount": 1,
+          "ticked": true,
+          "tickedBy": "Noah1",
+          "tickedAt": "2026-01-06T15:50:42.171Z",
+          "createdAt": "2026-01-06T15:49:33.702Z"
+        }
+      ]
+    },
+    {
+      "id": "4df3959f-6180-4cb2-94e9-7032fab000ab",
+      "title": "Test",
+      "code": "test",
+      "owner": "Noah1",
+      "description": "",
+      "createdAt": "2026-01-06T17:23:13.845Z",
+      "wishes": [
+        {
+          "id": "ff368235-2277-4a43-8614-9dcc04b785fc",
+          "title": "LOTR",
+          "priority": "medium",
+          "description": "",
+          "link": "https://www.amazon.de/Hobbit-Lord-Rings-Boxed-Set/dp/0261103563/ref=sr_1_5?__mk_de_DE=ÅMÅŽÕÑ&crid=1X2MP03B8IFDF&dib=eyJ2IjoiMSJ9.-Pf31g_oTPs2_nxfQqZcbRJRirUsThkBJrjmK_tdN_OMj5-xERmSy79290s-t_RFmor2wd_XojAIi8CWbxUZOLm2EfwOOsJ1q1OXNtgTruIm42-Q-aqAFoAmxTb5k0xbT5hgJEEeUkQdZnFhe1lX1dt7I-wvuCxP8kUWVflo5UyaIxVOGNFmVKnLG2SGVhqtYKIfc-aQDWtRPNvPdG6qOgXvQ3pdnzqcV-eA4zkmqjY.XbT-GZiFVFWoBCaWOCjzluQMGHQ9Jc3c_xtqrrVX2LE&dib_tag=se&keywords=lord+of+the+rings+fellowship&qid=1767709315&sprefix=lord+of+the+rings+fellowship%2Caps%2C145&sr=8-5#averageCustomerReviewsAnchor",
+          "image": "https://m.media-amazon.com/images/I/71+4WXa9RfL._SY385_.jpg",
+          "price": 33.34,
+          "priceRange": "",
+          "quantity": 1,
+          "reservations": [],
+          "reservedCount": 0,
+          "ticked": false,
+          "tickedBy": null,
+          "tickedAt": null,
+          "createdAt": "2026-01-06T17:23:36.671Z"
+        },
+        {
+          "id": "93b60392-ee70-403a-8d98-96b53bf36016",
+          "title": "asd",
+          "priority": "medium",
+          "description": "",
+          "link": "",
+          "image": "",
+          "price": null,
+          "priceRange": "",
+          "quantity": 1,
+          "reservations": [],
+          "reservedCount": 0,
+          "ticked": false,
+          "tickedBy": null,
+          "tickedAt": null,
+          "createdAt": "2026-01-06T17:23:40.674Z"
+        },
+        {
+          "id": "841ca52d-df2a-42a8-98fa-c1b827fca2b5",
+          "title": "asd",
+          "priority": "medium",
+          "description": "",
+          "link": "https://www.amazon.de/Hobbit-Lord-Rings-Boxed-Set/dp/0261103563/ref=sr_1_5?__mk_de_DE=ÅMÅŽÕÑ&crid=1X2MP03B8IFDF&dib=eyJ2IjoiMSJ9.-Pf31g_oTPs2_nxfQqZcbRJRirUsThkBJrjmK_tdN_OMj5-xERmSy79290s-t_RFmor2wd_XojAIi8CWbxUZOLm2EfwOOsJ1q1OXNtgTruIm42-Q-aqAFoAmxTb5k0xbT5hgJEEeUkQdZnFhe1lX1dt7I-wvuCxP8kUWVflo5UyaIxVOGNFmVKnLG2SGVhqtYKIfc-aQDWtRPNvPdG6qOgXvQ3pdnzqcV-eA4zkmqjY.XbT-GZiFVFWoBCaWOCjzluQMGHQ9Jc3c_xtqrrVX2LE&dib_tag=se&keywords=lord+of+the+rings+fellowship&qid=1767709315&sprefix=lord+of+the+rings+fellowship%2Caps%2C145&sr=8-5#averageCustomerReviewsAnchor",
+          "image": "https://m.media-amazon.com/images/I/71+4WXa9RfL._SY385_.jpg",
+          "price": 33.34,
+          "priceRange": "",
+          "quantity": 1,
+          "reservations": [],
+          "reservedCount": 0,
+          "ticked": false,
+          "tickedBy": null,
+          "tickedAt": null,
+          "createdAt": "2026-01-06T17:23:43.394Z"
+        }
+      ]
+    }
+  ]
+}

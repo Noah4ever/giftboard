@@ -1,0 +1,35 @@
+[
+  {
+    "name": "amazon",
+    "domains": [
+      "amazon.com",
+      "amazon.de",
+      "amazon.co.uk",
+      "amazon.fr",
+      "amazon.es",
+      "amzn.eu"
+    ],
+    "selectors": {
+      "whole": { "type": "classText", "value": "a-price-whole" },
+      "fraction": { "type": "classText", "value": "a-price-fraction" },
+      "symbol": { "type": "classText", "value": "a-price-symbol" },
+      "image": { "type": "attr", "selector": "#landingImage", "attr": "src" },
+      "dynamicImage": {
+        "type": "attr",
+        "selector": "#landingImage",
+        "attr": "data-a-dynamic-image",
+        "parse": "jsonKey"
+      },
+      "altImage": {
+        "type": "attr",
+        "selector": "#landingImage",
+        "attr": "data-old-hires"
+      }
+    },
+    "fallbackRegexes": [
+      "\\\"price\\\"\\s*:\\s*\\\"([0-9.,]+)\\\"",
+      "price\":\"([0-9.,]+)\"",
+      "\\$(\\d+[\\d.,]*)"
+    ]
+  }
+]

@@ -1,0 +1,19 @@
+[Unit]
+Description=Project Backend (%i)
+After=network.target
+
+[Service]
+# %i is the project name (e.g. giftboard)
+WorkingDirectory=/srv/api/%i/current
+EnvironmentFile=-/srv/api/%i/.env
+ExecStart=/bin/bash -lc "/srv/api/%i/run"
+User=www-data
+Restart=always
+RestartSec=3
+KillSignal=SIGINT
+TimeoutStopSec=20
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
